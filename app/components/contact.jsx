@@ -22,6 +22,9 @@ export default function Contact({ data }) {
   });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
+  const hasContact = !!(data?.email || data?.github || data?.linkedin || data?.twitter || data?.website || data?.web3forms_key);
+  if (!hasContact) return null;
+
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
